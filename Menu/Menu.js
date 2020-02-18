@@ -65,3 +65,5 @@ body.appendChild(menuComponent(menuItems));
 
 
 console.log(menuComponent(menuItems));
+
+// mvp complete 2/17/20 9:10pm
