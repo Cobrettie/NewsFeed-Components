@@ -112,3 +112,58 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+
+function componentCreater(title, date, firstParagraph, secondParagraph, thirdParagraph) {
+  // create elements
+  let addDiv = document.createElement('div');
+  let addH2 = document.createElement('h1');
+  let addDate = document.createElement('p');
+  let addP1 = document.createElement('p');
+  let addP2 = document.createElement('p');
+  let addP3 = document.createElement('p');
+  let addSpan = document.createElement('span');
+
+  // append children
+  addDiv.appendChild(addH2);
+  addDiv.appendChild(addDate);
+  addDiv.appendChild(addP1);
+  addDiv.appendChild(addP2);
+  addDiv.appendChild(addP3);
+  addDiv.appendChild(addSpan);
+
+  // add classes
+  addDiv.classList.add('article');
+  addDate.classList.add('date');
+  addSpan.classList.add('expandButton');
+
+  // add text content
+  addH2.textContent = title;
+  addDate.textContent = date;
+  addP1.textContent = firstParagraph;
+  addP2.textContent = secondParagraph;
+  addP3.textContent = thirdParagraph;
+
+  // add event listener
+  addSpan.addEventListener('click', () => {
+    addDiv.classList.toggle('article-open');
+  })
+
+  return addDiv;
+}
+
+let articlesContainer = document.querySelector('.articles');
+
+data.forEach(item => {
+  articlesContainer.appendChild(
+    componentCreater(
+      item.title,
+      item.date,
+      item.firstParagraph,
+      item.secondParagraph,
+      item.thirdParagraph
+    )
+  )
+});
+
+
+console.log(componentCreater());
