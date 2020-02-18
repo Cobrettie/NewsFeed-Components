@@ -64,4 +64,4 @@ const body = document.querySelector('body');
 body.appendChild(menuComponent(menuItems));
 
 
-console.log(menuComponent());
+console.log(menuComponent(menuItems));
