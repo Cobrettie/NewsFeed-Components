@@ -40,8 +40,6 @@ function menuComponent(array) {
   let menuUL = document.createElement('ul');
 
   menuDivContain.classList.add('menu');
-
-  // append children
   menuDivContain.appendChild(menuUL);
 
   // iterate over array, create li for each item
@@ -50,7 +48,6 @@ function menuComponent(array) {
     item.textContent = el;
     menuUL.appendChild(item);
   })
-
 
   let menuBtn = document.querySelector('.menu-button');
   menuBtn.addEventListener('click', event => {

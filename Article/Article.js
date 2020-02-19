@@ -154,6 +154,8 @@ function componentCreater(title, date, firstParagraph, secondParagraph, thirdPar
   let addP2 = document.createElement('p');
   let addP3 = document.createElement('p');
   let addSpan = document.createElement('span');
+  // close button stretch
+  let closeButton = document.createElement('button');
 
   // append children
   addDiv.appendChild(addH2);
@@ -162,11 +164,15 @@ function componentCreater(title, date, firstParagraph, secondParagraph, thirdPar
   addDiv.appendChild(addP2);
   addDiv.appendChild(addP3);
   addDiv.appendChild(addSpan);
+  // close button stretch
+  addDiv.appendChild(closeButton);
 
   // add classes
   addDiv.classList.add('article');
   addDate.classList.add('date');
   addSpan.classList.add('expandButton');
+  // close button stretch
+  closeButton.classList.add('close-button');
 
   // add text content
   addH2.textContent = title;
@@ -175,6 +181,7 @@ function componentCreater(title, date, firstParagraph, secondParagraph, thirdPar
   addP2.textContent = secondParagraph;
   addP3.textContent = thirdParagraph;
   addSpan.textContent = 'click for more';
+  closeButton.textContent = 'Remove Article';
 
   // add event listener
   addSpan.addEventListener('click', () => {
@@ -197,6 +204,5 @@ data.forEach(item => {
     )
   )
 });
-
 
 console.log(componentCreater());
