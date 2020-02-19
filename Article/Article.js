@@ -145,7 +145,7 @@ const data = [
 
 */
 
-function componentCreater(title, date, firstParagraph, secondParagraph, thirdParagraph) {
+function componentCreator(title, date, firstParagraph, secondParagraph, thirdParagraph) {
   // create elements
   let addDiv = document.createElement('div');
   let addH2 = document.createElement('h1');
@@ -206,7 +206,7 @@ let articlesContainer = document.querySelector('.articles');
 
 data.forEach(item => {
   articlesContainer.appendChild(
-    componentCreater(
+    componentCreator(
       item.title,
       item.date,
       item.firstParagraph,
@@ -216,4 +216,4 @@ data.forEach(item => {
   )
 });
 
-console.log(componentCreater());
+console.log(componentCreator());
