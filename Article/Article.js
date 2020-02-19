@@ -164,14 +164,12 @@ function componentCreater(title, date, firstParagraph, secondParagraph, thirdPar
   addDiv.appendChild(addP2);
   addDiv.appendChild(addP3);
   addDiv.appendChild(addSpan);
-  // close button stretch
   addDiv.appendChild(closeButton);
 
   // add classes
   addDiv.classList.add('article');
   addDate.classList.add('date');
   addSpan.classList.add('expandButton');
-  // close button stretch
   closeButton.classList.add('close-button');
 
   // add text content
@@ -186,6 +184,10 @@ function componentCreater(title, date, firstParagraph, secondParagraph, thirdPar
   // add event listener
   addSpan.addEventListener('click', () => {
     addDiv.classList.toggle('article-open');
+  })
+  
+  closeButton.addEventListener('click', event => {
+    addDiv.remove();
   })
 
   return addDiv;
