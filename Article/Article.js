@@ -147,7 +147,7 @@ const data = [
 
 function componentCreator(title, date, firstParagraph, secondParagraph, thirdParagraph) {
   // create elements
-  let addDiv = document.createElement('div');
+  let articleDiv = document.createElement('div');
   let addH2 = document.createElement('h1');
   let addDate = document.createElement('p');
   let addP1 = document.createElement('p');
@@ -158,16 +158,16 @@ function componentCreator(title, date, firstParagraph, secondParagraph, thirdPar
   let closeButton = document.createElement('button');
 
   // append children
-  addDiv.appendChild(addH2);
-  addDiv.appendChild(addDate);
-  addDiv.appendChild(addP1);
-  addDiv.appendChild(addP2);
-  addDiv.appendChild(addP3);
-  addDiv.appendChild(addSpan);
-  addDiv.appendChild(closeButton);
+  articleDiv.appendChild(addH2);
+  articleDiv.appendChild(addDate);
+  articleDiv.appendChild(addP1);
+  articleDiv.appendChild(addP2);
+  articleDiv.appendChild(addP3);
+  articleDiv.appendChild(addSpan);
+  articleDiv.appendChild(closeButton);
 
   // add classes
-  addDiv.classList.add('article');
+  articleDiv.classList.add('article');
   addDate.classList.add('date');
   addSpan.classList.add('expandButton');
   closeButton.classList.add('close');
@@ -183,23 +183,23 @@ function componentCreator(title, date, firstParagraph, secondParagraph, thirdPar
 
   // add event listeners
   addSpan.addEventListener('click', () => {
-    addDiv.classList.toggle('article-open');
+    articleDiv.classList.toggle('article-open');
     testClosingArticle();
   })
 
   closeButton.addEventListener('click', event => {
-    addDiv.remove();
+    articleDiv.remove();
   })
 
   function testClosingArticle() {
-    if (addDiv.classList.contains('article-open')) {
+    if (articleDiv.classList.contains('article-open')) {
       addSpan.textContent = 'click for less';
     } else {
       addSpan.textContent = 'click for more';
     }
   }
 
-  return addDiv;
+  return articleDiv;
 }
 
 let articlesContainer = document.querySelector('.articles');
