@@ -181,14 +181,23 @@ function componentCreater(title, date, firstParagraph, secondParagraph, thirdPar
   addSpan.textContent = 'click for more';
   closeButton.textContent = 'Remove Article';
 
-  // add event listener
+  // add event listeners
   addSpan.addEventListener('click', () => {
     addDiv.classList.toggle('article-open');
+    testClosingArticle();
   })
-  
+
   closeButton.addEventListener('click', event => {
     addDiv.remove();
   })
+
+  function testClosingArticle() {
+    if (addDiv.classList.contains('article-open')) {
+      addSpan.textContent = 'click for less';
+    } else {
+      addSpan.textContent = 'click for more';
+    }
+  }
 
   return addDiv;
 }
