@@ -170,7 +170,7 @@ function componentCreater(title, date, firstParagraph, secondParagraph, thirdPar
   addDiv.classList.add('article');
   addDate.classList.add('date');
   addSpan.classList.add('expandButton');
-  closeButton.classList.add('close-button');
+  closeButton.classList.add('close');
 
   // add text content
   addH2.textContent = title;
