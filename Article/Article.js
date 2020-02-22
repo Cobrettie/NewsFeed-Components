@@ -85,6 +85,38 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'Apparent JavaScript Bug Leaves Countless Accounts Hacked...',
+    date: 'Feb 19th, 2020',
+    firstParagraph: `Toad-like smile Flourish and Blotts he knew I’d come back Quidditch World Cup. Fat Lady baubles banana fritters fairy lights 
+        Petrificus Totalus. So thirsty, deluminator firs’ years follow me 12 inches of parchment. Head Boy start-of-term banquet Cleansweep Seven 
+        roaring lion hat. Unicorn blood crossbow mars is bright tonight, feast Norwegian Ridgeback. Come seek us where our voices sound, we cannot 
+        sing above the ground, Ginny Weasley bright red. Fanged frisbees, phoenix tears good clean match.`,
+        secondParagraph: `Toad-like smile Flourish and Blotts he knew I’d come back Quidditch World Cup. Fat Lady baubles banana fritters fairy lights 
+        Petrificus Totalus. So thirsty, deluminator firs’ years follow me 12 inches of parchment. Head Boy start-of-term banquet Cleansweep Seven 
+        roaring lion hat. Unicorn blood crossbow mars is bright tonight, feast Norwegian Ridgeback. Come seek us where our voices sound, we cannot 
+        sing above the ground, Ginny Weasley bright red. Fanged frisbees, phoenix tears good clean match.`,
+        thirdParagraph: `Toad-like smile Flourish and Blotts he knew I’d come back Quidditch World Cup. Fat Lady baubles banana fritters fairy lights 
+        Petrificus Totalus. So thirsty, deluminator firs’ years follow me 12 inches of parchment. Head Boy start-of-term banquet Cleansweep Seven 
+        roaring lion hat. Unicorn blood crossbow mars is bright tonight, feast Norwegian Ridgeback. Come seek us where our voices sound, we cannot 
+        sing above the ground, Ginny Weasley bright red. Fanged frisbees, phoenix tears good clean match.`
+  },
+  {
+    title: 'New Crypto on the Market... "Jayla"',
+    date: 'One day, soon',
+    firstParagraph: `Toad-like smile Flourish and Blotts he knew I’d come back Quidditch World Cup. Fat Lady baubles banana fritters fairy lights 
+        Petrificus Totalus. So thirsty, deluminator firs’ years follow me 12 inches of parchment. Head Boy start-of-term banquet Cleansweep Seven 
+        roaring lion hat. Unicorn blood crossbow mars is bright tonight, feast Norwegian Ridgeback. Come seek us where our voices sound, we cannot 
+        sing above the ground, Ginny Weasley bright red. Fanged frisbees, phoenix tears good clean match.`,
+        secondParagraph: `Toad-like smile Flourish and Blotts he knew I’d come back Quidditch World Cup. Fat Lady baubles banana fritters fairy lights 
+        Petrificus Totalus. So thirsty, deluminator firs’ years follow me 12 inches of parchment. Head Boy start-of-term banquet Cleansweep Seven 
+        roaring lion hat. Unicorn blood crossbow mars is bright tonight, feast Norwegian Ridgeback. Come seek us where our voices sound, we cannot 
+        sing above the ground, Ginny Weasley bright red. Fanged frisbees, phoenix tears good clean match.`,
+        thirdParagraph: `Toad-like smile Flourish and Blotts he knew I’d come back Quidditch World Cup. Fat Lady baubles banana fritters fairy lights 
+        Petrificus Totalus. So thirsty, deluminator firs’ years follow me 12 inches of parchment. Head Boy start-of-term banquet Cleansweep Seven 
+        roaring lion hat. Unicorn blood crossbow mars is bright tonight, feast Norwegian Ridgeback. Come seek us where our voices sound, we cannot 
+        sing above the ground, Ginny Weasley bright red. Fanged frisbees, phoenix tears good clean match.`
   }
 ];
 
@@ -112,3 +144,76 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+
+function componentCreator(title, date, firstParagraph, secondParagraph, thirdParagraph) {
+  // create elements
+  let articleDiv = document.createElement('div');
+  let addH2 = document.createElement('h1');
+  let addDate = document.createElement('p');
+  let addP1 = document.createElement('p');
+  let addP2 = document.createElement('p');
+  let addP3 = document.createElement('p');
+  let addSpan = document.createElement('span');
+  // close button stretch
+  let closeButton = document.createElement('button');
+
+  // append children
+  articleDiv.appendChild(addH2);
+  articleDiv.appendChild(addDate);
+  articleDiv.appendChild(addP1);
+  articleDiv.appendChild(addP2);
+  articleDiv.appendChild(addP3);
+  articleDiv.appendChild(addSpan);
+  articleDiv.appendChild(closeButton);
+
+  // add classes
+  articleDiv.classList.add('article');
+  addDate.classList.add('date');
+  addSpan.classList.add('expandButton');
+  closeButton.classList.add('close');
+
+  // add text content
+  addH2.textContent = title;
+  addDate.textContent = date;
+  addP1.textContent = firstParagraph;
+  addP2.textContent = secondParagraph;
+  addP3.textContent = thirdParagraph;
+  addSpan.textContent = 'click for more';
+  closeButton.textContent = 'Remove Article';
+
+  // add event listeners
+  addSpan.addEventListener('click', () => {
+    articleDiv.classList.toggle('article-open');
+    testClosingArticle();
+  })
+
+  closeButton.addEventListener('click', event => {
+    articleDiv.remove();
+  })
+
+  function testClosingArticle() {
+    if (articleDiv.classList.contains('article-open')) {
+      addSpan.textContent = 'click for less';
+    } else {
+      addSpan.textContent = 'click for more';
+    }
+  }
+
+  return articleDiv;
+}
+
+let articlesContainer = document.querySelector('.articles');
+
+data.forEach(item => {
+  articlesContainer.appendChild(
+    componentCreator(
+      item.title,
+      item.date,
+      item.firstParagraph,
+      item.secondParagraph,
+      item.thirdParagraph
+    )
+  )
+});
+
+console.log(componentCreator());
